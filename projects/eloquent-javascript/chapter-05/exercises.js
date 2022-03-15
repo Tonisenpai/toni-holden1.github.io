@@ -3,9 +3,13 @@
 // /////////////////////////////////////////////////////////////////////////////
 
 function flatten(array) {
-  for (let i = 0; i <= array.length; i++) {
-    return array[i].concat(...array); // [[0][3][2]]
-  }
+  // for (let i = 0; i <= array.length; i++) {
+  //   return array[i].concat(...array); // [[0][3][2]]
+  // }
+  let result = array.reduce((arr, current) => {
+    return arr.concat(current);
+  }, []);
+  return result;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -24,8 +28,13 @@ function loop(value, test, update, body) {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, test) {
+  for (let i = 0; i < array.length; i++) {
+    if (test(array[i]) === false) {
+      return false;
+    }
+  }
+return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
