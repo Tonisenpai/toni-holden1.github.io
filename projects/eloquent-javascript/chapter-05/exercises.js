@@ -13,12 +13,11 @@ function flatten(array) {
 // /////////////////////////////////////////////////////////////////////////////
 
 function loop(value, test, update, body) {
-  if (!test(value)) {
-    return; 
-  }  
-    body(value => {return value});
-
-    update(value => {return test(value)});
+  while (test(value)) {
+    body(value);
+    return loop(update(value), test, update, body)  
+    
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
