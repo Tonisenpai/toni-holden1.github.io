@@ -41,8 +41,24 @@ return true;
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(str) {
+  // create arrays for each direction
+  let ltr = [];
+  let rtl = [];
+  // iterate through input string
+  for (let i = 0; i < str.length; i++) {
+    let scriptName = characterScript(str.charCodeAt(i));
+    console.log(scriptName);
+    // check if the scriptName is NOT EQUAL to null
+    if (scriptName !== null) {
+      scriptName.direction === 'ltr' ? ltr.push(scriptName.name) : rtl.push(scriptName.name);
+    }
+  }
+  if (ltr.length > rtl.length) {
+    return 'ltr';
+  } else {
+    return 'rtl';
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
